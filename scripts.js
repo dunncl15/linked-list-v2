@@ -1,3 +1,9 @@
+$(document).ready(function() {
+  for(var i = 0; i < localStorage.length; i++) {
+    var storedBookmark =  JSON.parse(localStorage.getItem(localStorage.key(i)));
+    newBookmark(storedBookmark);
+  }
+})
 
 //Event Listeners
 
@@ -16,18 +22,25 @@ $('.bookmark-section').on('click', '.delete-btn', function() {
 
 //Read button
 $('.bookmark-section').on('click', '.read-btn', function() {
-  $(this).parent('.bookmark').addClass('read');
+  $(this).parent('.bookmark').toggleClass('read');
+
+  var id = $(this).parent('.bookmark').attr('id');
+  retrievedObject = JSON.parse(localStorage.getItem(id));
+  var currentStatus = $(this).parent('.bookmark').attr('class');
+  retrievedObject.status = currentStatus;
+  sendToStorage(id, retrievedObject);
 })
 
 //Functions
 function Bookmark(title, url) {
   this.title = title;
   this.url = url;
+  this.status = 'bookmark';
   this.id = Date.now();
 }
 
 function newBookmark(Bookmark) {
-  $('.bookmark-section').append(`<div id="${Bookmark.id}" class="bookmark">
+  $('.bookmark-section').append(`<div id="${Bookmark.id}" class="${Bookmark.status}">
     <p class="website-title" contenteditable>${Bookmark.title}</p>
     <a class="website-url" href="http://${Bookmark.url}" target="_blank" contenteditable>${Bookmark.url}</a>
     <button class="read-btn">Read</button>
