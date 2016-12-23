@@ -7,6 +7,18 @@ $('.enter-btn').on('click', function(e) {
   addNewBookmark();
 })
 
+//Delete button
+$('.bookmark-section').on('click', '.delete-btn', function() {
+  $(this).parent('.bookmark').remove();
+  var bookmarkId = $(this).parent('.bookmark').attr('id');
+  removeFromStorage(bookmarkId);
+})
+
+//Read button
+$('.bookmark-section').on('click', '.read-btn', function() {
+  $(this).parent('.bookmark').addClass('read');
+})
+
 //Functions
 function Bookmark(title, url) {
   this.title = title;
@@ -31,11 +43,12 @@ function addNewBookmark() {
   sendToStorage(userBookmark.id, userBookmark);
 }
 
+//JSON functions
 function sendToStorage(id, object) {
   var stringifiedBookmark = JSON.stringify(object);
   localStorage.setItem(id, stringifiedBookmark);
 }
 
 function removeFromStorage(id) {
-  var parsedBookmark = JSON.parse(localStorage.getItem(id));
+  JSON.parse(localStorage.removeItem(id));
 }
