@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+/******** Header Section ********/
+
+.header {
+  padding: 20px 0;
+  background-color: #455a64;
+  height: 40vh;
+}
+
+.title {
+  margin: 0 auto 20px auto;
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+}
+
+.logo {
+  height: 28px;
+  vertical-align: middle;
+}
+
+.web-title,
+.web-url {
+  display: block;
+  margin: 15px auto;
+  padding: 5px;
+  width: 80%;
+}
+
+input {
+  outline-color: #CFD8DC;
+  color: #455A64;
+}
+
+input[placeholder] {
+  font-size: 1.25em;
+  letter-spacing: 1pt;
+}
+
+ .enter-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 0;
+  width: 80%;
+  background-color: #ffc107;
+  border-style: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14pt;
+  font-weight: 600;
+  letter-spacing: 1pt;
+  outline: none;
+  text-align: center;
+}
+
+.enter-btn:hover {
+  background-color: #FFD773;
+}
+
+.enter-btn:disabled {
+  background-color: #FFD773;
+  cursor: default;
+}
+
+/******* Bookmark Section ******/
+
+.bookmark-section {
+  padding: 10px;
+  background-color: #cfd8dc;
+  height: 60vh;
+  overflow: auto;
+}
+
+.bookmark {
+  margin: 10px auto;
+  max-width: 98%;
+  padding: 5px;
+  background-color: #fff;
+  border: 2px solid #607d8b;
+}
+
+.read {
+  background-color: #F2F4F4;
+}
+
+.read .read-btn,
+.read .read-btn:hover {
+  color: #f05A28;
+  background-color: #F2F4F4;
+  border-bottom: none;
+}
+
+.read .delete-btn,
+.read .delete-btn:hover {
+  background-color: #F2F4F4;
+  border-bottom: none;
+}
+
+.website-title,
+.website-url {
+  border-bottom: 2px solid #cfd8dc;
+  vertical-align: middle;
+}
+
+.website-title {
+  padding: 5px;
+  margin: 0;
+  font-size: 16pt;
+  font-weight: 600;
+  color: #455a64;
+  letter-spacing: 1pt;
+}
+
+.website-url {
+  padding: 10px 5px;
+  display: block;
+  color: #607d8b;
+  font-size: 14pt;
+  text-decoration: none;
+}
+
+.website-url:hover {
+  color: #455A64;
+  font-weight: 500;
+}
+
+.read-btn,
+.delete-btn {
+  margin-top: 10px;
+  padding: 3px 0;
+  border-style: none;
+  background-color: #fff;
+  color: #455a64;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #F2F4F4;
+  outline: none;
+}
+
+.delete-btn {
+  float: right;
+}
+
+.read-btn:hover,
+.delete-btn:hover {
+  border-bottom: 2px solid #FFC107;
+  color: #455A64;
+  font-weight: 500;
+}
+
+
+@media screen and (min-width: 650px) {
+
+  .wrapper {
+    flex-direction: row;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 50%;
+  }
+
+  .bookmark-section {
+    height: 100vh;
+    width: 50%;
+  }
+
+  .title {
+    font-size: 2.25em;
+    letter-spacing: 1pt;
+  }
+
+  .logo {
+    height: 35px;
+  }
+
+  .web-title,
+  .web-url {
+    margin: 2em auto;
+  }
+
+}
