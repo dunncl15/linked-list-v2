@@ -2,15 +2,33 @@ $(document).ready(function() {
   for(var i = 0; i < localStorage.length; i++) {
     var storedBookmark =  JSON.parse(localStorage.getItem(localStorage.key(i)));
     newBookmark(storedBookmark);
+    $('.enter-btn').prop('disabled', true);
   }
 })
 
 //Event Listeners
 
+//Input fields
+$('.web-title').on('keyup', function() {
+  if ($('.web-title').val() === null) {
+    $('.enter-btn').prop('disabled', true);
+  } else
+    $('.enter-btn').prop('disabled', false);
+})
+
+$('.web-url').on('keyup', function() {
+  if ($('.web-title').val() === null) {
+    $('.enter-btn').prop('disabled', true);
+  } else
+    $('.enter-btn').prop('disabled', false);
+})
+
+
 //Enter button
 $('.enter-btn').on('click', function(e) {
   e.preventDefault();
   addNewBookmark();
+  clearInputs();
 })
 
 //Delete button
@@ -54,6 +72,11 @@ function addNewBookmark() {
   var userBookmark = new Bookmark(websiteTitle, websiteURL);
   newBookmark(userBookmark);
   sendToStorage(userBookmark.id, userBookmark);
+}
+
+function clearInputs() {
+  $('.web-title').val(null);
+  $('.web-url').val(null);
 }
 
 //JSON functions
