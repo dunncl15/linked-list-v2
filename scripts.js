@@ -41,8 +41,8 @@ function Bookmark(title, url) {
 
 function newBookmark(Bookmark) {
   $('.bookmark-section').append(`<div id="${Bookmark.id}" class="${Bookmark.status}">
-    <p class="website-title" contenteditable>${Bookmark.title}</p>
-    <a class="website-url" href="http://${Bookmark.url}" target="_blank" contenteditable>${Bookmark.url}</a>
+    <p class="website-title">${Bookmark.title}</p>
+    <a class="website-url" href="http://${Bookmark.url}" target="_blank">${Bookmark.url}</a>
     <button class="read-btn">Read</button>
     <button class="delete-btn">Delete</button>
   </div>`);
