@@ -2,27 +2,16 @@ $(document).ready(function() {
   for(var i = 0; i < localStorage.length; i++) {
     var storedBookmark =  JSON.parse(localStorage.getItem(localStorage.key(i)));
     newBookmark(storedBookmark);
-    $('.enter-btn').prop('disabled', true);
   }
 })
 
 //Event Listeners
 
 //Input fields
-$('.web-title').on('keyup', function() {
-  if ($('.web-title').val() === null) {
-    $('.enter-btn').prop('disabled', true);
-  } else
-    $('.enter-btn').prop('disabled', false);
-})
 
-$('.web-url').on('keyup', function() {
-  if ($('.web-title').val() === null) {
-    $('.enter-btn').prop('disabled', true);
-  } else
-    $('.enter-btn').prop('disabled', false);
+$('input[type="text"]').on('keyup', function() {
+  checkForm();
 })
-
 
 //Enter button
 $('.enter-btn').on('click', function(e) {
@@ -50,6 +39,7 @@ $('.bookmark-section').on('click', '.read-btn', function() {
 })
 
 //Functions
+
 function Bookmark(title, url) {
   this.title = title;
   this.url = url;
@@ -77,6 +67,27 @@ function addNewBookmark() {
 function clearInputs() {
   $('.web-title').val(null);
   $('.web-url').val(null);
+  disableBtn();
+}
+
+function checkForm() {
+  var complete = true;
+  $('input[type="text"]').each(function() {
+    if ($(this).val() === '') {
+      complete = false;
+      disableBtn();
+    } else {
+      enableBtn();
+    }
+  });
+}
+
+function enableBtn() {
+  $('.enter-btn').prop('disabled', false);
+}
+
+function disableBtn() {
+  $('.enter-btn').prop('disabled', true);
 }
 
 //JSON functions
